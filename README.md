@@ -5,18 +5,14 @@ Emacs compilation-mode based support for mypy-mode
 
 Python 3.6 + due to Type Hint support expectations
 
-
-## Usage
-
-
-<!-- -----{install}-----<!--
+### Install 
 
 M-x mypy-install  or pip install mypy
 
 Add this to your init file:
 (require 'sdev-mypy)
 
-<!-- -------{Use}-------<!--
+### Usage
 
 M-x sdev/py-type-check
 
