@@ -1,5 +1,5 @@
 # mypy-mode
-Emacs compilation-mode based support for mypy-mode
+Emacs compilation-mode based support for python 3.6+ Type Hint Checking using  mypy
 
 ## Requirements
 
