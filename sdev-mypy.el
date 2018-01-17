@@ -1,18 +1,17 @@
-;;; sdev-mypy.el --- Python Type checking support and compilation-mode based on mypy
+;;; sdev-mypy.el --- Python Type checking compilation-mode
 
 ;; Copyright (C) 2017 Andres Mariscal <carlos.mariscal.melgar@gmail.com>
 ;;
 ;; Author: Andres Mariscal <carlos.mariscal.melgar@gmail.com>
+;; URL: https://github.com/SerialDev/mypy-mode
 ;; Created: 14 November 2017
 ;; Version: 1.0
-;; Package-Requires: pip install mypy , Python 3.6 + 
-;=================================={mypy-mode}=================================;
+;; Package-Requires: ((emacs "24.4"))
 
 ;;; Commentary:
+;; pip install mypy , Python 3.6 + 
 ;; Maintained by Andres Mariscal -- carlos.mariscal.melgar@gmail.com
-
 ;;; License:
-
 ;; This file is not part of GNU Emacs.
 ;; However, it is distributed under the same license.
 
@@ -32,7 +31,7 @@
 ;; Boston, MA 02110-1301, USA.
 ;;; Code:
 
-(defun shell-command-to-buffer (command buffer-name &optional buffer-mode)
+(defun sdev-mypy-shell-command-to-buffer (command buffer-name &optional buffer-mode)
   "Run a `command' ,pop and, append its output to buffer `buffer-name' ."
   (with-current-buffer (pop-to-buffer buffer-name)
     (goto-char (point-max))
@@ -40,16 +39,16 @@
     (goto-char (point-min))
     (funcall buffer-mode)))
 
-(defun buffer-mode (&optional buffer-or-name)
+(defun sdev-mypy-buffer-mode (&optional buffer-or-name)
   "Returns the major mode associated with a buffer.
 If buffer-or-name is nil return current buffer's mode."
   (buffer-local-value 'major-mode
    (if buffer-or-name (get-buffer buffer-or-name) (current-buffer))))
 
-(defun sdev/py-type-check()
+(defun sdev-mypy-type-check()
   "type checker for python.--inferstats "
   (interactive)
-   (shell-command-to-buffer
+   (sdev-mypy-shell-command-to-buffer
     (message "python -m mypy \
 --ignore-missing-imports \
 --disallow-incomplete-defs \
@@ -64,17 +63,17 @@ If buffer-or-name is nil return current buffer's mode."
  --disallow-untyped-calls \
 --python-version 3.6 \
 %s"  buffer-file-name)
-    "*py-typecheck*" 'mypy-mode))
+    "*py-typecheck*" 'sdev-mypy-mode))
 
 
 ;; a simple major mode, mypy-mode
 
-(define-derived-mode mypy-mode compilation-mode "mypy"
+(define-derived-mode sdev-mypy-mode compilation-mode "mypy"
   "major mode for editing mypy language code."
 
   )
 
-(defun mypy-install()
+(defun sdev-mypy-install()
   (interactive)
   (async-shell-command "pip install mypy"))
 
@@ -88,15 +87,15 @@ If buffer-or-name is nil return current buffer's mode."
 (make-face 'mypy-line-face)
 (make-face 'mypy-quoted-face)
 
-(add-hook 'mypy-mode-hook (lambda()
+(add-hook 'sdev-mypy-mode-hook (lambda()
 			    (set (make-local-variable font-lock-type-face)
 				   'mypy-file-face)
 			     ))
-(add-hook 'mypy-mode-hook (lambda()
+(add-hook 'sdev-mypy-mode-hook (lambda()
 			    (set (make-local-variable font-lock-keyword-face)
 				   'mypy-line-face)
 			     ))
-(add-hook 'mypy-mode-hook (lambda()
+(add-hook 'sdev-mypy-mode-hook (lambda()
 			    (set (make-local-variable font-lock-variable-name-face)
 				   'mypy-quoted-face)
 			     ))
@@ -118,7 +117,7 @@ If buffer-or-name is nil return current buffer's mode."
 
 
 
-(defun sdev/buffer-dir()
+(defun sdev-mypy-buffer-dir()
   (file-name-directory buffer-file-name))
 
 (provide 'sdev-mypy)

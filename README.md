@@ -14,7 +14,10 @@ Add this to your init file:
 
 ### Usage
 
-M-x sdev/py-type-check
+M-x sdev-mypy-type-check
 
+### Example Output
+
+[[https://github.com/SerialDev/mypy-mode/master/images/mypy-example.png|alt=mypy]]
 
 
