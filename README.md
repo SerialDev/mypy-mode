@@ -18,6 +18,8 @@ M-x sdev-mypy-type-check
 
 ### Example Output
 
-[[https://github.com/SerialDev/mypy-mode/images/mypy-example.png|alt=mypy]]
+
+![mypy](https://raw.githubusercontent.com//SerialDev/mypy-mode/master/images/mypy-example.png)
+
 
 
