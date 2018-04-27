@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Test docker image validity
           command: "export PATH=\"/root/.cask/bin:$PATH\"  && \
+          cask install && \
           make test && \
           emacs --version" 
 
