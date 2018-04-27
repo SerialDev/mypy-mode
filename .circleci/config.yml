@@ -18,27 +18,7 @@ jobs:
           command: "emacs --version" 
       - run:
           name: Test docker image validity
-          command: "make test" 
-      # - run:
-      #     name: Build application Docker image
-      #     command: |
-      #       docker build --cache-from=app -t app .
-      # - run:
-      #     name: Save Docker image layer cache
-      #     command: |
-      #       mkdir -p /caches
-      #       docker save -o /caches/app.tar app
-      # - save_cache:
-      #     key: v1-{{ .Branch }}-{{ epoch }}
-      #     paths:
-      #       - /caches/app.tar
-      # - run:
-      #     name: Run tests
-      #     command: |
-      #       docker-compose -f ./docker-compose.test.yml up
-      # - deploy:
-      #     name: Push application Docker image
-      #     command: "python build.py" 
-
+          command: "https://raw.githubusercontent.com/cask/cask/master/go | python \
+          make test" 
 
 
