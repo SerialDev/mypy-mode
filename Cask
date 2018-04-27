@@ -2,6 +2,7 @@
 
 (package-file "sdev-mypy.el")
 
+(depends-on "ert-runner")
 (depends-on "helm")
 
 (development
