@@ -20,7 +20,7 @@ jobs:
           name: Test docker image validity
           command: "export PATH=/root/.cask/bin:$PATH  && \
           export PATH=/bin:$PATH && \
-          chmod 777 make && \
+          chmod 777 Makefile && \
           make test && \
           emacs --version" 
 
