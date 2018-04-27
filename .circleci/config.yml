@@ -18,8 +18,8 @@ jobs:
           command: "emacs --version" 
       - run:
           name: Test docker image validity
-          command: "export PATH=\"/root/.cask/bin:$PATH\"  && \
-          export PATH=\/bin:$PATH && \
+          command: "export PATH=/root/.cask/bin:$PATH  && \
+          export PATH=/bin:$PATH && \
           cask install && \
           make test && \
           emacs --version" 
