@@ -18,11 +18,14 @@ jobs:
           command: "emacs --version" 
       - run:
           name: Test docker image validity
-          command: "export PATH=/root/.cask/bin:$PATH  && \
+          command: "
           export PATH=/bin:$PATH && \
+          export PATH=/root/.cask/bin:$PATH  && \
           chmod 777 Makefile && \
           chmod 777 Cask && \
           chmod 777 sdev-mypy.el && \
+          make unit && \
+          make test && \
           make test && \
           emacs --version" 
 
