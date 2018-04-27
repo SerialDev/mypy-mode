@@ -20,13 +20,8 @@ jobs:
           name: Test docker image validity
           command: "
           export PATH=/bin:$PATH && \
-          export PATH=/root/.cask/bin:$PATH  && \
-          chmod 777 Makefile && \
-          chmod 777 Cask && \
-          chmod 777 sdev-mypy.el && \
-          make unit && \
-          make test && \
-          make test && \
+          export PATH=/root/.cask/bin:$PATH  \
+          make test  \
           emacs --version" 
 
 
