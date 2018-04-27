@@ -21,6 +21,8 @@ jobs:
           command: "export PATH=/root/.cask/bin:$PATH  && \
           export PATH=/bin:$PATH && \
           chmod 777 Makefile && \
+          chmod 777 Cask && \
+          chmod 777 sdev-mypy.el && \
           make test && \
           emacs --version" 
 
