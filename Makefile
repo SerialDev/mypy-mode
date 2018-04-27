@@ -15,6 +15,6 @@ compile:
 	${CASK} exec ${EMACS} -Q -batch -f batch-byte-compile sdev-mypy.el
 
 clean:
-	rm -f helm-company.elc
+	rm -f sdev-mypy.elc
 
 .PHONY:        all test unit compile clean
